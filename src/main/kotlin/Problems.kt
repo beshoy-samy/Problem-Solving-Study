@@ -275,3 +275,20 @@ fun moveElementToEnd(array: MutableList<Int>, toMove: Int): List<Int> {
 
     return array
 }
+
+//"array": [-1, -5, -10, -1100, -900, -1101, -1102, -9001]
+fun isMonotonic(array: List<Int>): Boolean {
+    // Write your code here.
+    var nonDecreasing = true
+    var nonIncreasing = true
+
+    for (i in 0..array.lastIndex.dec()) {
+
+        if (array[i] < array[i + 1]) nonIncreasing = false
+
+        if (array[i] > array[i + 1]) nonDecreasing = false
+
+    }
+
+    return nonDecreasing or nonIncreasing
+}
