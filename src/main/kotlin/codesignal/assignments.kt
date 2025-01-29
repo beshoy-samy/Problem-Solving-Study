@@ -625,7 +625,7 @@ fun missingNumber(nums: IntArray): Int {
 /**
  * Floyd's Cycle Detection
  * https://leetcode.com/problems/find-the-duplicate-number/solution/
- * https://www.youtube.com/watch?v=wjYnzkAhcNk
+ *  @see <a href="https://www.youtube.com/watch?v=wjYnzkAhcNk">link</a>
  */
 fun findDuplicate(nums: IntArray): Int {
     var fast = nums[0]

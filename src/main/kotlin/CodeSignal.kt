@@ -79,8 +79,22 @@ fun isCryptSolution(crypt: MutableList<String>, solution: MutableList<MutableLis
     return crypt[0].toLong() + crypt[1].toLong() == crypt[2].toLong()
 }
 
-data class ListNode<T>(var value: T) {
-    var next: ListNode<T>? = null;
+data class ListNode<T>(var value: T, var next: ListNode<T>? = null)
+
+fun <T> List<T>.toListNode(): ListNode<T> {
+    require(this.isNotEmpty()) { "list can't be empty" }
+    var node: ListNode<T>? = null
+    var pointer: ListNode<T>? = null
+    forEach {
+        if (node == null) {
+            node = ListNode(it)
+            pointer = node
+        } else {
+            pointer?.next = ListNode(it)
+            pointer = pointer?.next
+        }
+    }
+    return node!!
 }
 
 fun isListPalindrome(l: ListNode<Int>?): Boolean {
@@ -108,12 +122,12 @@ fun isListPalindrome(l: ListNode<Int>?): Boolean {
     return true
 }
 
-private fun <T> ListNode<T>?.print() {
+fun <T> ListNode<T>?.print() {
     var next = this
     while (next != null) {
-        print(next)
+        print(next.value)
         next = next.next
-        print(",")
+        if(next != null) print("->")
     }
     println()
 }
