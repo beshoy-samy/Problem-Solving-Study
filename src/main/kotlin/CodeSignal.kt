@@ -79,7 +79,6 @@ fun isCryptSolution(crypt: MutableList<String>, solution: MutableList<MutableLis
     return crypt[0].toLong() + crypt[1].toLong() == crypt[2].toLong()
 }
 
-data class ListNode<T>(var value: T, var next: ListNode<T>? = null)
 
 fun <T> List<T>.toListNode(): ListNode<T> {
     require(this.isNotEmpty()) { "list can't be empty" }
@@ -107,7 +106,7 @@ fun isListPalindrome(l: ListNode<Int>?): Boolean {
         cursor = cursor.next?.next
     }
 
-    var reversed = reverse(listMiddleNode)
+    var reversed = structy.reverse(listMiddleNode)
     reversed.print()
     cursor = l
 
@@ -127,7 +126,7 @@ fun <T> ListNode<T>?.print() {
     while (next != null) {
         print(next.value)
         next = next.next
-        if(next != null) print("->")
+        if (next != null) print("->")
     }
     println()
 }
@@ -196,9 +195,9 @@ class StackLinkedList<T> {
     }
 }
 
-class QueueArray<T> {
+class QueueArray<T>(vararg elements: T) {
 
-    private val dynamicArray = ArrayDeque<T>()
+    private val dynamicArray = ArrayDeque(elements.toList())
 
     fun enqueue(value: T) = dynamicArray.addLast(value)
 
@@ -207,6 +206,8 @@ class QueueArray<T> {
     fun front(): T? = dynamicArray.firstOrNull()
 
     fun isEmpty(): Boolean = dynamicArray.isEmpty()
+
+    fun isNotEmpty(): Boolean = dynamicArray.isNotEmpty()
 
     fun print() = println(dynamicArray.joinToString())
 

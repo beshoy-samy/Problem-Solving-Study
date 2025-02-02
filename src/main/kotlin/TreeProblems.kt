@@ -26,8 +26,8 @@ fun calculateNodeDepth(node: BinaryTree? = null, depth: Int = 0): Int {
     return leftDepth.plus(rightDepth).plus(depth)
 }
 
-class Node(val name: String) {
-    val children = mutableListOf<Node>()
+class N0de(val name: String) {
+    val children = mutableListOf<N0de>()
 
     fun depthFirstSearch(): List<String> {
         // Write your code here.
@@ -36,7 +36,7 @@ class Node(val name: String) {
         return dfs
     }
 
-    fun goDeep(node: Node, dfs: MutableList<String>){
+    fun goDeep(node: N0de, dfs: MutableList<String>){
         dfs.add(node.name)
         println(dfs)
         node.children.forEach { goDeep(it, dfs) }
