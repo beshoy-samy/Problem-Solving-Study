@@ -1,3 +1,7 @@
+package structy
+
+import ListNode
+
 fun arraySum(array: List<Int>): Int {
     if (array.isEmpty()) return 0
     return array.first() + arraySum(array.drop(1))
