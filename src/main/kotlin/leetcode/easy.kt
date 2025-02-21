@@ -76,8 +76,18 @@ fun searchInsertHelper(nums: IntArray, target: Int, start: Int = 0, end: Int = n
     else start
 }
 
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
+class ListNode(var `val`: Int, var next: ListNode? = null)
+
+fun ListNode?.value() = this?.`val` ?: 0
+
+fun ListNode?.print() {
+    var next = this
+    while (next != null) {
+        print(next.`val`)
+        next = next.next
+        if (next != null) print("->")
+    }
+    println()
 }
 
 /* EX
