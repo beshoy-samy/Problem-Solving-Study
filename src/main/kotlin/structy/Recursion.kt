@@ -4,7 +4,25 @@ import ListNode
 
 fun arraySum(array: List<Int>): Int {
     if (array.isEmpty()) return 0
-    return array.first() + arraySum(array.drop(1))
+    return array.last() + arraySum(array.dropLast(1))
+}
+
+fun reverseString(s: String): String {
+    if (s.isEmpty()) return ""
+    return s.last() + reverseString(s.dropLast(1))
+}
+
+fun palindrome(s: String): Boolean {
+    if (s.isEmpty()) return true
+    if (s.length == 1) return true
+    if (s.first() != s.last()) return false
+    return palindrome(s.substring(1, s.lastIndex))
+}
+
+fun fibonacci(n: Int): Int {
+    if (n == 0) return 0
+    if (n == 1) return 1
+    return fibonacci(n-1) + fibonacci(n-2)
 }
 
 fun addTwoNumbers(l1: ListNode<Int>?, l2: ListNode<Int>?, carry: Int = 0): ListNode<Int>? {
@@ -74,4 +92,64 @@ fun zip(head1: ListNode<Int>?, head2: ListNode<Int>?): ListNode<Int>? {
     head1.next = head2
     head2.next = zip(next, next2)
     return head1
+}
+
+fun <T> subsets(elements: List<T>): List<List<T>> {
+    if (elements.isEmpty()) return listOf(listOf())
+
+    val element = elements.first()
+    val droppedSubsets = subsets(elements.drop(1))
+
+    val subsets = mutableListOf<List<T>>()
+    subsets.addAll(droppedSubsets)
+
+    droppedSubsets.forEach {
+        val set = it.toMutableList()
+        set.add(element)
+        subsets.add(set)
+    }
+
+    return subsets
+}
+
+fun <T> permutations(elements: List<T>): List<List<T>> {
+    if (elements.isEmpty()) return mutableListOf(listOf())
+
+    val all = mutableListOf<List<T>>()
+    val element = elements.first()
+    val permutations = permutations(elements.drop(1))
+
+    permutations.forEach {
+        for (i in 0..it.size) {
+            val list = mutableListOf<T>()
+            val left = it.subList(0, i)
+            val right = it.subList(i, it.size)
+            list.addAll(left)
+            list.add(element)
+            list.addAll(right)
+            all.add(list)
+        }
+    }
+
+    return all
+}
+
+fun <T> createCombinations(elements: List<T>, k: Int): List<List<T>> {
+    if (elements.isEmpty()) return listOf(listOf())
+    if (k == 0) return listOf(listOf())
+    if (elements.size == k) return listOf(elements)
+    if (k > elements.size) return listOf(listOf())
+
+    val all = mutableListOf<List<T>>()
+    val element = elements.first()
+    val smallerCombinations = createCombinations(elements.drop(1), k.dec())
+    val combinations = createCombinations(elements.drop(1), k)
+    all.addAll(combinations)
+    smallerCombinations.forEach {
+        val comb = it.toMutableList()
+        comb.add(element)
+        all.add(comb)
+    }
+
+    return all
 }

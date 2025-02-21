@@ -1,5 +1,7 @@
 data class ListNode<T>(var value: T, var next: ListNode<T>? = null)
 
+fun <T> ListNode<T>?.value(default: T? = null) = this?.value ?: default
+
 data class Node<T>(var value: T, var left: Node<T>? = null, var right: Node<T>? = null)
 
 val fakeBinaryTree by lazy {
@@ -55,5 +57,22 @@ val fakeLongBinaryTree by lazy {
     b.right = d
     d.left = e
     e.right = f
+    a
+}
+
+val fakeLeetListNode by lazy {
+    val a = leetcode.ListNode(2)
+    val b = leetcode.ListNode(4)
+    val c = leetcode.ListNode(3)
+    a.next = b
+    b.next = c
+    a
+}
+val fakeLeetListNode2 by lazy {
+    val a = leetcode.ListNode(5)
+    val b = leetcode.ListNode(6)
+    val c = leetcode.ListNode(4)
+    a.next = b
+    b.next = c
     a
 }
