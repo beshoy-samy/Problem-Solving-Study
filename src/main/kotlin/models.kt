@@ -1,6 +1,6 @@
 data class ListNode<T>(var value: T, var next: ListNode<T>? = null)
 
-fun <T> ListNode<T>?.value(default: T? = null) = this?.value ?: default
+fun <T> ListNode<T>?.value(default: T) = this?.value ?: default
 
 data class Node<T>(var value: T, var left: Node<T>? = null, var right: Node<T>? = null)
 
@@ -61,17 +61,58 @@ val fakeLongBinaryTree by lazy {
 }
 
 val fakeLeetListNode by lazy {
-    val a = leetcode.ListNode(2)
-    val b = leetcode.ListNode(4)
-    val c = leetcode.ListNode(3)
+    val a = leetcode.ListNode(5)
+    val b = leetcode.ListNode(7)
+    val c = leetcode.ListNode(10)
     a.next = b
     b.next = c
     a
 }
 val fakeLeetListNode2 by lazy {
-    val a = leetcode.ListNode(5)
-    val b = leetcode.ListNode(6)
-    val c = leetcode.ListNode(4)
+    val a = leetcode.ListNode(6)
+    val b = leetcode.ListNode(8)
+    val c = leetcode.ListNode(9)
+    a.next = b
+    b.next = c
+    a
+}
+
+val fakeLeetListNodeString by lazy {
+    val a = ListNode("a")
+    val b = ListNode("b")
+    val c = ListNode("c")
+    val d = ListNode("d")
+    a.next = b
+    b.next = c
+    c.next = d
+    a
+}
+
+val fakeLeetListNodeString2 by lazy {
+    val a = ListNode("e")
+    val b = ListNode("f")
+    val c = ListNode("g")
+    val d = ListNode("j")
+    val e = ListNode("k")
+    a.next = b
+    b.next = c
+    c.next = d
+    d.next = e
+    a
+}
+
+val fakeListNode by lazy {
+    val a = ListNode(7)
+    val b = ListNode(7)
+    val c = ListNode(7)
+    a.next = b
+    b.next = c
+    a
+}
+val fakeListNode2 by lazy {
+    val a = ListNode(6)
+    val b = ListNode(8)
+    val c = ListNode(9)
     a.next = b
     b.next = c
     a
