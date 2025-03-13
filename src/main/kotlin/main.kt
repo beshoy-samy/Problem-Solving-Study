@@ -1,5 +1,5 @@
-import structy.*
+import structy.treeLevels
 
 fun main(args: Array<String>) {
-    println(createLinkedList(listOf<Int>()).print())
+    println(treeLevels(fakeLongBinaryTree))
 }

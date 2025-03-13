@@ -44,6 +44,15 @@ val fakeNegativesBinaryTree by lazy {
     Node(-1, b, c)
 }
 
+//       a
+//     /    \
+//    b      c
+//     \
+//      d
+//      /
+//     e
+//      \
+//       f
 val fakeLongBinaryTree by lazy {
     val a = Node("a")
     val b = Node("b")
