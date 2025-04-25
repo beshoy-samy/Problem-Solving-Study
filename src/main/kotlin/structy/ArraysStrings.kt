@@ -111,3 +111,25 @@ fun fiveSort(array: MutableList<Int>): List<Int> {
 
     return array
 }
+
+fun isPalindrome(s: String): Boolean {
+    var left = 0
+    var right = s.lastIndex
+    while (left < right) {
+        if (s[left] != s[right]) return false
+        left++
+        right--
+    }
+    return true
+}
+
+fun isSubsequence(string1: String, string2: String): Boolean {
+    var s1 = 0
+    var s2 = 0
+    while (s2 < string2.length && s1 < string1.length) {
+        if (string1[s1] == string2[s2]) s1++
+        s2++
+    }
+
+    return s1 == string1.length
+}

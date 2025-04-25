@@ -27,10 +27,10 @@ fun dfs(root: Node<String>?, values: MutableList<String> = mutableListOf()): Lis
     return values
 }
 
-fun breadthFirstValues(root: Node<String>?): List<String> {
+fun <T> breadthFirstValues(root: Node<T>?): List<T> {
     if (root == null) return listOf()
     val queue = QueueArray(root)
-    val values = mutableListOf<String>()
+    val values = mutableListOf<T>()
     while (queue.isNotEmpty()) {
         val node = queue.dequeue()!!
         values.add(node.value)
