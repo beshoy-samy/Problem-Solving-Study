@@ -1,9 +1,3 @@
-data class ListNode<T>(var value: T, var next: ListNode<T>? = null)
-
-fun <T> ListNode<T>?.value(default: T) = this?.value ?: default
-
-data class Node<T>(var value: T, var left: Node<T>? = null, var right: Node<T>? = null)
-
 val fakeBinaryTree by lazy {
     val b = Node('b')
     val c = Node('c')
@@ -28,6 +22,13 @@ val fakeBinaryIntTree by lazy {
     Node(5, b, c)
 }
 
+//      -1
+//     /   \
+//   -6    -5
+//   / \     \
+//  -1  0    -13
+//      /       \
+//     -1       -2
 val fakeNegativesBinaryTree by lazy {
     val b = Node(-6)
     val c = Node(-5)
@@ -66,6 +67,132 @@ val fakeLongBinaryTree by lazy {
     b.right = d
     d.left = e
     e.right = f
+    a
+}
+
+//       a
+//        \
+//         b
+//          \
+//           c
+//            \
+//             d
+val fakeLongPathBinaryTree by lazy {
+    val a = Node("a")
+    val b = Node("b")
+    val c = Node("c")
+    val d = Node("d")
+
+    a.right = b
+    b.right = c
+    c.right = d
+    a
+}
+
+//       a
+//        \
+//         b
+//        / \
+//       d   c
+val fakeLongPathBinaryTree2 by lazy {
+    val a = Node("a")
+    val b = Node("b")
+    val c = Node("c")
+    val d = Node("d")
+
+    a.right = b
+    b.right = c
+    b.left = d
+    a
+}
+
+//       a
+//      /
+//     10
+//    / \
+//   4  17
+//    \
+//     5
+val fakeIntBinaryTree2 by lazy {
+    val a = Node(19)
+    val b = Node(10)
+    val c = Node(4)
+    val d = Node(17)
+    val e = Node(5)
+
+    a.left = b
+    b.left = c
+    b.right = d
+    c.right = e
+    a
+}
+
+//  1
+//   \
+//    2
+//     \
+//      3
+//       \
+//        4
+val fakeBST by lazy {
+    val a = Node(1)
+    val b = Node(2)
+    val c = Node(3)
+    val d = Node(4)
+
+    a.right = b
+    b.right = c
+    c.right = d
+    a
+}
+
+//  12
+//  /
+// 9
+//  \
+//   11
+val fakeBST2 by lazy {
+    val a = Node(12)
+    val b = Node(9)
+    val c = Node(11)
+
+    a.left = b
+    b.right = c
+    a
+}
+
+//          1
+//         / \
+//       14   15
+//       /     \
+//      7       17
+//     / \
+//    2  12
+//     \ /
+//     3 9
+//        \
+//         11
+val fakeBSTHard by lazy {
+    val a = Node(1)
+    val b = Node(14)
+    val c = Node(15)
+    val d = Node(7)
+    val e = Node(17)
+    val f = Node(2)
+    val g = Node(12)
+    val h = Node(3)
+    val j = Node(9)
+    val k = Node(11)
+
+    a.left = b
+    a.right = c
+    b.left = d
+    c.right = e
+    d.left = f
+    d.right = g
+    f.right = h
+    g.left = j
+    j.right = k
     a
 }
 
@@ -126,3 +253,12 @@ val fakeListNode2 by lazy {
     b.next = c
     a
 }
+
+val graph: Map<String, List<String>> = mapOf(
+    "f" to listOf("g", "i"),
+    "g" to listOf("h"),
+    "h" to listOf(),
+    "i" to listOf("g", "k"),
+    "j" to listOf("i"),
+    "k" to listOf()
+)
