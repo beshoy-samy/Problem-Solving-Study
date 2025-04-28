@@ -3,6 +3,7 @@ package structy
 import QueueArray
 import neighbours
 
+
 fun <T> List<List<T>>.toGraph(): Map<T, List<T>> {
     val graph = mutableMapOf<T, MutableList<T>>()
     forEach {
@@ -298,9 +299,34 @@ fun swim(
                 base.enqueue(it to d.inc())
             }
         }
-        if(visited.contains(rc)) continue
+        if (visited.contains(rc)) continue
         if ((grid.getOrNull(rc.first)?.getOrNull(rc.second) ?: "W") == "L") return d.dec()
         visited.add(rc)
     }
     return 0
+}
+
+fun hasCycle(graph: Map<String, List<String>>): Boolean {
+    val visiting = mutableSetOf<String>()
+    val visited = mutableSetOf<String>()
+    graph.keys.forEach {
+        if (cycleDfs(src = it, graph, visiting, visited)) return true
+    }
+    return false
+}
+
+fun cycleDfs(
+    src: String,
+    graph: Map<String, List<String>>,
+    visiting: MutableSet<String>,
+    visited: MutableSet<String>
+): Boolean {
+    if (visited.contains(src)) return false
+    if (visiting.contains(src)) return true
+    visiting.add(src)
+    graph[src]?.forEach {
+        if (cycleDfs(it, graph, visiting, visited)) return true
+    }
+    visited.add(src)
+    return false
 }
