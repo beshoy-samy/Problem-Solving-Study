@@ -330,3 +330,25 @@ fun cycleDfs(
     visited.add(src)
     return false
 }
+
+fun prereqsPossible(numCourses: Int, prereqs: List<List<Int>>): Boolean {
+    val graph = prereqs.prereqsCoursesGraph()
+    val studying = mutableSetOf<Int>()
+    val studied = mutableSetOf<Int>()
+    repeat(numCourses) { course ->
+        if (study(course, graph, studying, studied).not()) return false
+    }
+    return true
+}
+
+fun study(course: Int, prereqs: Map<Int, List<Int>>, studying: MutableSet<Int>, studied: MutableSet<Int>): Boolean {
+    if (studied.contains(course)) return true
+    if (studying.contains(course)) return false
+    studying.add(course)
+    prereqs[course]?.forEach {
+        if (study(it, prereqs, studying, studied).not()) return false
+    }
+    studying.remove(course)
+    studied.add(course)
+    return true
+}
