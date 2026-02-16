@@ -3,6 +3,7 @@ package structy
 import Node
 import QueueArray
 import StackArray
+import isLeaf
 import kotlin.math.max
 
 fun depthFirstValues(root: Node<String>?): List<String> {
@@ -143,4 +144,27 @@ fun <T> leafList(root: Node<T>?): List<T> {
     if (root == null) return listOf()
     if (root.left == null && root.right == null) return listOf(root.value)
     return leafList(root.left) + leafList(root.right)
+}
+
+fun <T> invertBinaryTree(root: Node<T>?): Node<T>? {
+    if (root == null) return null
+    if (root.left == null && root.right == null) return root
+
+    val left = invertBinaryTree(root.left)
+    val right = invertBinaryTree(root.right)
+
+    root.left = right
+    root.right = left
+
+    return root
+}
+
+fun <T> isSubtree(root: Node<T>?, subRoot: Node<T>?, isSearching: Boolean = false): Boolean {
+    if (root == null || subRoot == null) return false
+
+
+    val isLeftSubtree = isSubtree(root.left, subRoot)
+    val isRightSubtree = isSubtree(root.right, subRoot)
+
+    return isLeftSubtree || isRightSubtree
 }

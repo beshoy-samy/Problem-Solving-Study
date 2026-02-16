@@ -4,6 +4,8 @@ fun <T> ListNode<T>?.value(default: T) = this?.value ?: default
 
 data class Node<T>(var value: T, var left: Node<T>? = null, var right: Node<T>? = null)
 
+data class GNode<T>(var value: T, var neighbors: MutableList<GNode<T>?> = mutableListOf())
+
 class QueueArray<T>(vararg elements: T) {
 
     private val dynamicArray = ArrayDeque(elements.toList())

@@ -158,29 +158,3 @@ fun addBinary(a: String, b: String): String {
 
     return stingBuilder.reverse().toString()
 }
-
-/* EX lengthOfLongestSubstring //sliding window
-Input: s = "abcad"
-Output: 4
-*/
-fun lengthOfLongestSubstring(s: String): Int {
-
-    var max = 0
-    var firstPointer = 0
-    var secondPointer = 0
-    val substring = mutableSetOf<Char>()
-
-    while (secondPointer < s.length) {
-
-        if (substring.add(s[secondPointer])) {
-            max = maxOf(max, substring.size)
-            secondPointer++
-        } else {
-            substring.remove(s[firstPointer])
-            firstPointer++
-        }
-    }
-
-    return max
-}
-

@@ -1,5 +1,14 @@
-import structy.fib
+import leetcode.decodeCiphertext
+import leetcode.hasAllCodes
+import leetcode.uniquePaths
+import structy.allUnique
 
 fun main(args: Array<String>) {
-    println(fib(6))
+    print("=========Kotlin Playground========="); println(); println("OUTPUT"); println()
+
+    println(
+        decodeCiphertext("iveo    eed   l te   olc", 4)
+    )
+
+    return
 }

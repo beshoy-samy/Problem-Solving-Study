@@ -120,3 +120,16 @@ fun addLists(head1: ListNode<Int>?, head2: ListNode<Int>?, carry: Int = 0): List
     val sum = head1.value(default = 0) + head2.value(default = 0) + carry
     return ListNode(sum.mod(10), addLists(head1?.next, head2?.next, sum.div(10)))
 }
+
+fun hasCycle(head: ListNode<Int>): Boolean {
+    var slow: ListNode<Int>? = head
+    var fast: ListNode<Int>? = head
+
+    while (fast?.next != null) {
+        fast = fast.next?.next
+        if (fast == slow) return true
+        slow = slow?.next
+    }
+
+    return false
+}

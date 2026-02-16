@@ -17,3 +17,6 @@ fun <T> printTree(node: Node<T>?, prefix: String = "", isLeft: Boolean = false) 
 // r to c
 fun Pair<Int, Int>.neighbours() =
     listOf(first to second.dec(), first to second.inc(), first.dec() to second, first.inc() to second)
+
+// r to c
+fun Pair<Int, Int>.downAndRight() = listOf(first to second.inc(), first.inc() to second)
